@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#fff8e7">
+<title>飛竜くんのゲーム</title>
+<meta name="description" content="飛竜くんのミニゲーム（試作）3つの入口">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+:root{--ink:#3a1a12;--dragon:#d8322a;--gold:#f6c343;--paper:#fff8e7;
+  --display:"Dela Gothic One","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
+  --body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:500;font-size:16px;line-height:1.6;
+  padding:max(20px,env(safe-area-inset-top,0px)) 16px max(28px,env(safe-area-inset-bottom,0px))}
+main{max-width:440px;margin:0 auto}
+header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+header img{width:76px;height:76px;flex:none}
+h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.2;margin:0;color:var(--dragon);text-wrap:balance}
+.lead{margin:0 0 18px;font-size:14px;font-weight:700}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+a.game{display:block;text-decoration:none;color:inherit;background:#fff;border:3px solid var(--ink);border-radius:18px;box-shadow:0 5px 0 var(--ink);overflow:hidden}
+a.game:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
+a.game:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.band{height:14px;border-bottom:3px solid var(--ink)}
+.b1{background:#8fd3f4}.b2{background:#141a3c}.b3{background:#2f8fb8}
+.in{padding:12px 16px 14px}
+h2{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.25;margin:0 0 4px}
+.in p{margin:0;font-size:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tags span{font-size:12px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:1px 10px;background:var(--paper)}
+.tags span.rk{background:var(--gold)}
+.go{margin-top:10px;font-family:var(--display);font-size:16px;color:#fff;background:var(--dragon);border:3px solid var(--ink);border-radius:12px;padding:6px 12px;text-align:center}
+footer{margin-top:22px;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="data:image/png;base64,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" alt="">
+    <h1>飛竜くんのゲーム</h1>
+  </header>
+  <p class="lead">スマホで遊べるミニゲーム（試作）です。遊びたいゲームを押してね。</p>
+  <ul>
+    <li><a class="game" href="../">
+      <div class="band b1"></div>
+      <div class="in"><h2>のびのび飛竜くん</h2>
+        <p>ごちそうを食べて体をのばし、60mの竜をめざそう。</p>
+        <div class="tags"><span>指でなぞる</span><span class="rk">ランキングあり</span></div>
+        <div class="go">あそぶ</div></div></a></li>
+    <li><a class="game" href="../hanabi/">
+      <div class="band b2"></div>
+      <div class="in"><h2>花火ドーン！</h2>
+        <p>打ち上げた花火を、いちばん高い所でタップして開かせよう。</p>
+        <div class="tags"><span>タイミングでタップ</span><span>30秒</span></div>
+        <div class="go">あそぶ</div></div></a></li>
+    <li><a class="game" href="../tenryu/">
+      <div class="band b3"></div>
+      <div class="in"><h2>天竜川くだり</h2>
+        <p>岩や流木をよけて、アユを集めながら天竜川をくだろう。</p>
+        <div class="tags"><span>指で左右に動かす</span><span>ハート3つ</span></div>
+        <div class="go">あそぶ</div></div></a></li>
+  </ul>
+  <footer>飛竜くんは浜北商工会青年部のキャラクターです。</footer>
+</main>
+</body>
+</html>
